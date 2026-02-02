@@ -10,6 +10,7 @@ export const GifsApp = () => {
 
     const [previousTerms, setPreviousTerms] = useState(["Perros", "Gatos"]);
     const [gifs, setGifs] = useState(mockGifs);
+    
     const handleTermClick = ( term:string ) =>
     {
         console.log(`Term clicked: ${term}`);
