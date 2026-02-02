@@ -8,9 +8,9 @@ import { GetGifsByQuery } from './gifs/actions/get-gifs.action'
 
 export const GifsApp = () => {
 
-    const [previousTerms, setPreviousTerms] = useState(["Perros", "Gatos"]);
+    const [previousTerms, setPreviousTerms] = useState(["perros", "gatos"]);
     const [gifs, setGifs] = useState(mockGifs);
-    
+
     const handleTermClick = ( term:string ) =>
     {
         console.log(`Term clicked: ${term}`);
