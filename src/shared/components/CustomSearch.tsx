@@ -43,7 +43,6 @@ export const CustomSearch = ({placeholder, buttonText, onSearch}:Props) => {
         value={searchTerm}
         onChange={ (event) => setSearchTerm(event.target.value) }
         onKeyDown={handlePressEnter}
-
         />
         <button onClick={handleSearch}>{buttonText}</button>
     </div>
