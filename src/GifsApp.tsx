@@ -9,6 +9,7 @@ import { GetGifsByQuery } from './gifs/actions/get-gifs.action'
 export const GifsApp = () => {
 
     const [previousTerms, setPreviousTerms] = useState(["Perros", "Gatos"]);
+    const [gifs, setGifs] = useState(mockGifs);
     const handleTermClick = ( term:string ) =>
     {
         console.log(`Term clicked: ${term}`);
@@ -28,7 +29,7 @@ export const GifsApp = () => {
                 setPreviousTerms([...previousTerms]);
 
                 const fetchedGIFs = await GetGifsByQuery(query);
-                console.log(fetchedGIFs);
+                setGifs(fetchedGIFs);
             }
         }
     }
@@ -44,7 +45,7 @@ export const GifsApp = () => {
 
         <CustomList items={previousTerms} onLabelClick={handleTermClick} />
 
-        <GifsContainer gifs={mockGifs}/>
+        <GifsContainer gifs={gifs}/>
     </>
   )
 }
