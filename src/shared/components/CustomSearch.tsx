@@ -18,7 +18,7 @@ export const CustomSearch = ({placeholder, buttonText, onSearch}:Props) => {
 
       onSearch(searchTerm);
 
-    }, 250)
+    }, 350)
 
     return () => { clearTimeout(TimeoutID); };
   }, [searchTerm, onSearch]);

@@ -4,17 +4,33 @@ import { CustomHeader } from './shared/components/CustomHeader'
 import { CustomSearch } from './shared/components/CustomSearch'
 import { CustomList } from './shared/components/PreviousSearches'
 import { GifsContainer } from './gifs/components/GifsContainer'
+import { GetGifsByQuery } from './gifs/actions/get-gifs.action'
 
 export const GifsApp = () => {
 
-    const [previousTerms, setPreviousTerms] = useState(["animales", "fotos"]);
+    const [previousTerms, setPreviousTerms] = useState(["Perros", "Gatos"]);
     const handleTermClick = ( term:string ) =>
     {
         console.log(`Term clicked: ${term}`);
     }
-    const handleSearch = ( query:string ) => 
+    const handleSearch = async( query:string ) => 
     {
-        console.log(query);
+        query = query.toLowerCase().trim();
+        if(query != "")
+        {
+            if(!previousTerms.includes(query))
+            {
+                previousTerms.unshift(query);
+                if(previousTerms.length > 8)
+                {
+                    previousTerms.pop();
+                }
+                setPreviousTerms([...previousTerms]);
+
+                const fetchedGIFs = await GetGifsByQuery(query);
+                console.log(fetchedGIFs);
+            }
+        }
     }
 
   return (
